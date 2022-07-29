@@ -25,18 +25,25 @@ public class US_BOT {
     public void crawl() throws IOException {
         ArrayList<object> PROFILE_LIST = new ArrayList<>();
         HashMap<String, String> Profile_data = new HashMap<>();
-        Document doc = Jsoup.connect("https://cha.house.gov/subcommittees/joint-committee-congress-library-116th-congress").get();
-        Elements insideSection = doc.select("#region-content > div > div > div.center-wrapper > div.panel-col-first.panel-panel > div");
-        for (Element elements : insideSection) {
-            Elements PROFILES = insideSection.select(".each-member");
-            for (Element PROFILE : PROFILES) {
-                String PROFILE_IDENTIFIER = PROFILE.select("span").text();
-                Elements PROFILE_IMAGE_ELEMENT = PROFILE.select("img");
-                String SPLIT_PROFILE[] = PROFILE_IDENTIFIER.split("~");
-                String PROFILE_NAME = SPLIT_PROFILE[0];
-                String PROFILE_STATE = SPLIT_PROFILE[1];
-                String PROFILE_IMGURL = PROFILE_IMAGE_ELEMENT.attr("src");
-                System.out.println(new object(PROFILE_NAME, PROFILE_STATE, PROFILE_IMGURL));
+        String url = "https://cha.house.gov/subcommittees/joint-committee-congress-library-116th-congress";
+        Document doc = Jsoup.connect(url).get();
+
+        Elements details = doc.select("#region-content > div > div > div.center-wrapper > div.panel-col-first.panel-panel > div");
+        for (Element elements : details)
+        {
+            Elements profilesOfInsiders = details.select(".each-member");
+
+            for (Element PROFILE : profilesOfInsiders)
+            {
+                String insiders_Identity = PROFILE.select("span").text(); // Grab All detail.
+
+                Elements insiders_img = PROFILE.select("img");  // Grab Image Doc
+
+                String split_insiders[] = insiders_Identity.split("~");  // Split Strings
+                String insider_name = split_insiders[0];
+                String insider_state = split_insiders[1];
+                String insider_url = insiders_img.attr("src");      // Grab Urls
+                System.out.println(new object(insider_name, insider_state, insider_url));
             }
 
         }
