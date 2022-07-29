@@ -33,8 +33,8 @@ public class object {
 
     @Override
     public String toString() {
-        return ("PROFILE_NAME:"+ " " +this.getProfileName()+ "~" +
-                " PROFILE_STATE: "+this.getStateName() + " " +" "+ "~" +
+        return ("PROFILE_NAME:"+ " " +this.getProfileName()+ "From" +
+                " STATE: "+this.getStateName() + "   =>" +
                 " IMAGE_URL: "+" " + this.getImgUrl());
     }
 
