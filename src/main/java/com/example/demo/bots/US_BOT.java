@@ -38,7 +38,6 @@ public class US_BOT {
                 String PROFILE_IMGURL = PROFILE_IMAGE_ELEMENT.attr("src");
                 System.out.println(new object(PROFILE_NAME, PROFILE_STATE, PROFILE_IMGURL));
             }
-
         }
     }
 }
