@@ -43,6 +43,7 @@ public class US_BOT {
                 String insider_name = split_insiders[0];
                 String insider_state = split_insiders[1];
                 String insider_url = insiders_img.attr("src");      // Grab Urls
+//                System.out.println(new object(insider_name, insider_state, insider_url));
                 System.out.println(new object(insider_name, insider_state, insider_url));
             }
 
